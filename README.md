@@ -1,14 +1,12 @@
 # App_movile
-MVP académico desarrollado para la asignatura DSY1105 – Desarrollo de Aplicaciones Móviles (Duoc UC · CITT, Sede San Joaquín) · Evaluación Parcial 2.
+# MVP académico desarrollado para la asignatura DSY1105 – Desarrollo de Aplicaciones Móviles (Duoc UC · CITT, Sede San Joaquín) · Evaluación Parcial 2.
 
 👥 Integrantes
 Integrante	Rol en el proyecto
-Nombre Apellido (Integrante A)	Ej.: UI, navegación y cámara
-Nombre Apellido (Integrante B)	Ej.: Room, ViewModels y validaciones
-Equipo N°: ___
-Docente: ___
-Tablero Trello: Ver planificación <!-- reemplazar por el enlace real -->
-Video demo: Ver demostración <!-- reemplazar por el enlace real -->
+Nombre Apellido Arthur Coby
+Nombre Apellido Ignacion Sanchez
+Tema 12
+Docente: Alvaro
 📌 Contexto del proyecto
 
 CMC360 Ciberseguridad Industrial SpA es una empresa chilena especializada en ciberseguridad de tecnología operacional (OT), assessments y compliance de infraestructura crítica.
