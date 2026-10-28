@@ -69,7 +69,7 @@ fun NuevoLevantamientoScreen(
     val context = LocalContext.current
     val sacudida = rememberSacudida(viewModel.fallos)
 
-    // ----- Recurso nativo 1: cámara -----
+    // Acuerdo de resultado de tarea para obtener imágenes utilizando la cámara del aparato.
     val lanzadorCamara = rememberLauncherForActivityResult(
         ActivityResultContracts.TakePicture()
     ) { exito -> viewModel.resultadoCamara(exito) }
@@ -86,18 +86,18 @@ fun NuevoLevantamientoScreen(
         if (concedido) abrirCamara() else viewModel.permisoCamaraDenegado()
     }
 
-    // ----- Recurso nativo 2: galería de imágenes -----
+    // Acuerdo de resultado para elegir un archivo multimedia a través del selector del sistema.
     val lanzadorGaleria = rememberLauncherForActivityResult(
         ActivityResultContracts.PickVisualMedia()
     ) { uri ->
         if (uri != null) viewModel.guardarDesdeGaleria(context, uri)
     }
 
-    // Vibración (recurso nativo 3) cuando el formulario tiene errores
+    // Efecto colateral que activa el servicio de vibración del aparato ante errores en los campos.
     LaunchedEffect(viewModel.fallos) {
         if (viewModel.fallos > 0) vibrar(context)
     }
-    // Cuando termina el análisis se pasa a la pantalla de detalle
+    // Accede a la pantalla de detalle ingresando el ID generado al concluir el proceso.
     LaunchedEffect(viewModel.idCreado) {
         viewModel.idCreado?.let { onCreado(it) }
     }
@@ -109,7 +109,7 @@ fun NuevoLevantamientoScreen(
                 onAtras = if (viewModel.analizando) null else onAtras
             )
         },
-        // El botón de guardar queda fijo abajo (se oculta mientras se analiza)
+        // Barra inferior estática con el botón de guardado; se oculta de forma temporal durante el análisis.
         bottomBar = {
             if (!viewModel.analizando) {
                 Surface(shadowElevation = 6.dp) {
@@ -203,7 +203,7 @@ fun NuevoLevantamientoScreen(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Vista previa de la foto (o un recuadro vacío)
+                // Muestra el componente de imagen de forma condicional cuando hay una ruta de archivo válida en el ViewModel.
                 if (viewModel.rutaImagen.isNotEmpty()) {
                     ImagenEvidencia(
                         ruta = viewModel.rutaImagen,
@@ -282,7 +282,7 @@ fun NuevoLevantamientoScreen(
     }
 }
 
-// Pantalla que se muestra mientras se "analiza" la imagen (con animación de pulso)
+// Establece una transición continua para animar la opacidad del componente, simulando un estado de análisis en curso.
 @Composable
 fun PantallaAnalisis(modifier: Modifier = Modifier) {
     val transicion = rememberInfiniteTransition(label = "pulso")
