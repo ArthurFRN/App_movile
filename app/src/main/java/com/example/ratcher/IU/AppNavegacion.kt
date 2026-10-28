@@ -19,7 +19,7 @@ import com.example.ratcher.viewmodel.LoginViewModel
 import com.example.ratcher.viewmodel.NuevoLevantamientoViewModel
 import com.example.ratcher.viewmodel.RegistroViewModel
 
-// Rutas (nombres) de cada pantalla
+// Nombres de las trayectorias para administrar la navegación entre las pantallas de la aplicación.
 object Rutas {
     const val LOGIN = "login"
     const val REGISTRO = "registro"
