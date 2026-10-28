@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Recursos nativos: cámara y vibración -->
+    <!--SOLICITUDES DE PERMISOS PARA PODER USAR LA CAMARA Y NOTIFICACIONES-->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Permite que la cámara guarde la foto dentro de la app -->
+        <!--PERMITE QUE LA APLICACION PUEDA MANTENER LA FOTO RECIEN SACADA -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
