@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.ratcher.util.Seguridad
 
-// Base de datos local (SQLite). Aquí se crean las 4 tablas de la app.
+// Simulacion de base de datos para guardar los users
 class BaseDatos(context: Context) : SQLiteOpenHelper(context, "ratcher.db", null, 1) {
 
     override fun onConfigure(db: SQLiteDatabase) {
         super.onConfigure(db)
-        // Activa las claves foráneas (para que al borrar un levantamiento se borren sus componentes)
+        // Habilita las claves foráneas para garantizar la integridad referencial y facilitar el borrado automático en cascada de los elementos al suprimir un levantamiento
         db.setForeignKeyConstraintsEnabled(true)
     }
 
@@ -69,7 +69,7 @@ class BaseDatos(context: Context) : SQLiteOpenHelper(context, "ratcher.db", null
             """
         )
 
-        // Usuario de prueba para poder entrar la primera vez
+        // Inserta un usuario por defecto/prueba para permitir el primer inicio de sesión en la app.
         val valores = ContentValues()
         valores.put("nombre", "Usuario de prueba")
         valores.put("correo", "test@test.com")
@@ -87,7 +87,7 @@ class BaseDatos(context: Context) : SQLiteOpenHelper(context, "ratcher.db", null
     }
 
     companion object {
-        // Solo debe existir una instancia de la base de datos (singleton)
+        // Patrón Singleton para asegurar una única instancia de la base de datos en toda la app.
         @Volatile
         private var instancia: BaseDatos? = null
 
