@@ -217,7 +217,7 @@ fun HomeScreen(
     }
 }
 
-// Tarjeta azul oscura con dos números: levantamientos totales y por completar
+// Ficha de resumen con estilo oscuro que exhibe el total de levantamientos y los que están pendientes.
 @Composable
 fun TarjetaResumen(total: Int, porCompletar: Int) {
     Surface(
