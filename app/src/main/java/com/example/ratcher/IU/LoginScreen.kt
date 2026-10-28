@@ -47,11 +47,11 @@ fun LoginScreen(
     val sacudida = rememberSacudida(viewModel.fallos)
     val estado = viewModel.estado
 
-    // Cuando hay un error, el teléfono vibra (recurso nativo)
+    // Genera una vibración nativa en el dispositivo al capturar errores.
     LaunchedEffect(viewModel.fallos) {
         if (viewModel.fallos > 0) vibrar(context)
     }
-    // Cuando el login es correcto, se avisa a la navegación
+    // Responde al estado exitoso del login activando el callback de navegación.
     LaunchedEffect(estado) {
         if (estado is LoginState.Success) onLoginExitoso()
     }
@@ -113,7 +113,7 @@ fun LoginScreen(
         )
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Botón o indicador de carga
+        // Presenta un indicador de carga o el botón principal para ingresar (con animación de temblor).
         if (estado is LoginState.Loading) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
         } else {
@@ -124,7 +124,7 @@ fun LoginScreen(
             )
         }
 
-        // Mensaje general de error (animado)
+        // Contenedor con animación de visibilidad para mostrar el texto dinámico de error.
         AnimatedVisibility(visible = estado is LoginState.Error) {
             Text(
                 text = if (estado is LoginState.Error) estado.error else "",
