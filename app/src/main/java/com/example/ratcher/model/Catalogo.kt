@@ -1,6 +1,6 @@
 package com.example.ratcher.model
 
-// Estados posibles de un levantamiento y de un componente
+// Catálogo centralizado de estados para validar inspecciones y elementos en el campo.
 object Estados {
     const val EN_REVISION = "En revisión"
     const val VALIDADO = "Validado"

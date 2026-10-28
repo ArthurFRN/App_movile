@@ -1,6 +1,6 @@
 package com.example.ratcher.model
 
-// Cada acción queda registrada: así hay trazabilidad entre imagen y componentes
+// Constituye un anotacion en el historial para asegurar la conexión entre las imágenes y los elementos alterados.
 data class Historial(
     val id: Long = 0,
     val levantamientoId: Long,

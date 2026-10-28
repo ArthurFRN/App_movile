@@ -1,6 +1,9 @@
 package com.example.ratcher.model
 
-// Un levantamiento = la revisión de un rack con su foto de evidencia
+// Entidad central del ascenso que aglutina los metadatos de la revisión del
+// rack, diferenciando las columnas persistentes de los campos calculados en la consulta.
+
+
 data class Levantamiento(
     val id: Long = 0,
     val rackId: String,

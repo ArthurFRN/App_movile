@@ -1,6 +1,6 @@
 package com.example.ratcher.model
 
-// Un componente que el reconocedor detectó en la foto
+// Entidad del esquema que guarda los pormenores del objeto identificado, el porcentaje de certeza y el historial de ajustes.
 data class Componente(
     val id: Long = 0,
     val levantamientoId: Long,
