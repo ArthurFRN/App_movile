@@ -133,7 +133,7 @@ fun DetalleScreen(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Datos del levantamiento
+                // Estructura de datos que refleja la información general del levantamiento.
                 item {
                     TarjetaSuave(modifier = Modifier.fillMaxWidth()) {
                         Column(modifier = Modifier.padding(16.dp)) {
@@ -164,7 +164,7 @@ fun DetalleScreen(
                     }
                 }
 
-                // Tres números: total, revisados y pendientes
+                // Contadores para monitorear el progreso: total, evaluados y por revisar.
                 item {
                     val total = viewModel.componentes.size
                     val pendientes = viewModel.componentes.count { it.estado == Estados.RECONOCIDO }
@@ -178,7 +178,7 @@ fun DetalleScreen(
                     }
                 }
 
-                // Foto de evidencia
+                // Ruta o indicación de la imagen capturada como prueba del levantamiento.
                 item {
                     Text(
                         text = "Evidencia vinculada",
@@ -197,7 +197,7 @@ fun DetalleScreen(
                     )
                 }
 
-                // Componentes reconocidos
+                // Catálogo de elementos identificados o anotados durante el levantamiento.
                 item {
                     Text(
                         text = "Componentes reconocidos (" + viewModel.componentes.size + ")",
@@ -215,7 +215,7 @@ fun DetalleScreen(
                     )
                 }
 
-                // Trazabilidad
+                // Registro de modificaciones y monitoreo (trazabilidad) de las acciones ejecutadas.
                 item {
                     Text(
                         text = "Trazabilidad",
@@ -245,12 +245,12 @@ fun DetalleScreen(
         }
     }
 
-    // Formulario de corrección (ventana emergente)
+    // Presenta el cuadro de diálogo que aparece para modificar un registro cuando se ha seleccionado un elemento en el estado.
     if (viewModel.editando != null) {
         DialogCorreccion(viewModel)
     }
 
-    // Confirmación antes de eliminar
+    // Diálogo de verificación para suprimir el levantamiento y la información relacionada.
     if (confirmarBorrado) {
         AlertDialog(
             onDismissRequest = { confirmarBorrado = false },
@@ -301,7 +301,7 @@ fun DialogCorreccion(viewModel: DetalleViewModel) {
     )
 }
 
-// Cuadro con un número grande y un texto debajo (ej: 04 Revisados)
+// Componente de tarjeta métrica que presenta un número formateado con un texto explicativo en la parte inferior.
 @Composable
 fun Contador(numero: Int, texto: String, modifier: Modifier = Modifier) {
     TarjetaSuave(modifier = modifier) {
