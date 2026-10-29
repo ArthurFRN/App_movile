@@ -141,12 +141,12 @@ fun LoginScreen(
             Text("¿No tienes cuenta? Regístrate")
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = "Usuario de prueba: test@test.com / 123456",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
+        //Spacer(modifier = Modifier.height(16.dp))
+        //Text(
+        //   text = "Usuario de prueba: test@test.com / 123456",
+        //   style = MaterialTheme.typography.bodySmall,
+        //  color = MaterialTheme.colorScheme.secondary,
+        //  modifier = Modifier.align(Alignment.CenterHorizontally)
+        //)
     }
 }
