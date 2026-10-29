@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun RatcherTheme(
-    // El mockup solo tiene tema claro, por eso ya no se sigue el modo oscuro del teléfono
+    // El mockup solo tiene tema claro, pero cambiando él false a true se puede adaptar al modo en el cual se encuentra el dispositivo
     darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
