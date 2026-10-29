@@ -11,6 +11,7 @@ MVP académico para la asignatura **DSY1105 – Desarrollo de Aplicaciones Móvi
 
 - Equipo N°: 12
 - Docente: Alvaro
+- nombre del proyecto: Ratcher
 
 ## Contexto
 
