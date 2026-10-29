@@ -2,7 +2,7 @@ package com.example.ratcher.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Colores de la app (azul industrial)
+// Colores de la app
 val AzulOscuro = Color(0xFF0B3C5D)
 val AzulMedio = Color(0xFF328CC1)
 val Amarillo = Color(0xFFD9B310)
