@@ -4,10 +4,11 @@ MVP académico para la asignatura **DSY1105 – Desarrollo de Aplicaciones Móvi
 (Duoc UC · CITT, Sede San Joaquín) · **Evaluación Parcial 2**.
 
 ## Integrantes
+
 | Integrante | 
-|---|---|
-| Arthur Coby | 
-| Ignacio Sanchez |
+|---|---|----|
+| Arthur Coby | |
+| Ignacio Sanchez ||
 
 - Equipo N°: 12
 - Docente: Alvaro
