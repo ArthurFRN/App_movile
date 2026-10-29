@@ -18,7 +18,8 @@ class LevantamientoRepository(context: Context) {
     private val columnasLevantamiento =
         "id, rack_id, area, fecha, observaciones, ruta_imagen, responsable, estado"
 
-    // ---------------- Levantamientos ----------------
+    // Realiza la inserción del levantamiento en el hilo de E/S ([Dispatchers.IO]),
+    // mapeando las propiedades a ContentValues con limpieza básica de cadenas.
 
     suspend fun crear(l: Levantamiento): Long = withContext(Dispatchers.IO) {
         val valores = ContentValues()
@@ -32,7 +33,8 @@ class LevantamientoRepository(context: Context) {
         baseDatos.writableDatabase.insert("levantamientos", null, valores)
     }
 
-    // Lista todos los levantamientos, con la cantidad de componentes y cuántos faltan por revisar
+    // Realiza una consulta en el hilo de E/S ([Dispatchers.IO]) para obtener los registros organizados por ID,
+    // incluyendo contadores acumulados por cada elevación
     suspend fun listar(): List<Levantamiento> = withContext(Dispatchers.IO) {
         val resultado = mutableListOf<Levantamiento>()
         val cursor = baseDatos.readableDatabase.rawQuery(
@@ -72,7 +74,7 @@ class LevantamientoRepository(context: Context) {
         baseDatos.writableDatabase.delete("levantamientos", "id = ?", arrayOf(id.toString()))
     }
 
-    // ---------------- Componentes ----------------
+    // Agrega varios elementos en una sola transacción de base de datos para mejorar el rendimiento y garantizar la integridad de los datos.
 
     suspend fun guardarComponentes(lista: List<Componente>) = withContext(Dispatchers.IO) {
         val db = baseDatos.writableDatabase
@@ -128,7 +130,7 @@ class LevantamientoRepository(context: Context) {
             baseDatos.writableDatabase.update("componentes", valores, "id = ?", arrayOf(id.toString()))
         }
 
-    // ---------------- Historial (trazabilidad) ----------------
+    // Registra una nueva acción en el registro de trazabilidad de manera asíncrona.
 
     suspend fun agregarHistorial(h: Historial) = withContext(Dispatchers.IO) {
         val valores = ContentValues()
@@ -164,7 +166,7 @@ class LevantamientoRepository(context: Context) {
         resultado
     }
 
-    // ---------------- Ayuda ----------------
+    //Función de apoyo que descompone los datos de un Cursor SQL en el modelo de dominio Levantamiento.
 
     private fun leerLevantamiento(c: Cursor): Levantamiento {
         return Levantamiento(
