@@ -5,12 +5,12 @@ MVP académico para la asignatura **DSY1105 – Desarrollo de Aplicaciones Móvi
 
 ## Integrantes
 
-| Integrante | Rol en el proyecto |
+| Integrante | 
 |---|---|
-| Arthur Coby | _completar_ |
-| Ignacio Sanchez | _completar_ |
+| Arthur Coby | 
+| Ignacio Sanchez |
 
-- Equipo N°: _completar_
+- Equipo N°: 12
 - Docente: Alvaro
 
 ## Contexto
@@ -53,12 +53,12 @@ revisarlos (confirmar, corregir o rechazar), dejando todo guardado con trazabili
 - Pulso del texto mientras se analiza la imagen
 
 ### Validaciones
-Todas están en `util/Validaciones.kt` (fuera de la interfaz) y tienen pruebas unitarias en
+Todas están en `util/Validaciones.kt` y tienen pruebas unitarias en
 `app/src/test/.../ValidacionesTest.kt`. Cada campo muestra ícono de error o de correcto y un mensaje.
 
 ## Importante: el reconocimiento es simulado
 
-El caso permite usar servicios de prueba. La clase `ReconocedorSimulado` **no usa inteligencia artificial**:
+El caso permite usar servicios de prueba. La clase ReconocedorSimulado
 elige componentes del catálogo a partir del tamaño del archivo, por eso la misma foto siempre da el mismo resultado.
 Para una versión real solo habría que reemplazar esa clase por un servicio de reconocimiento de imágenes.
 
@@ -104,12 +104,12 @@ Login → Lista de levantamientos → Nuevo levantamiento (datos + foto)
 
 1. Abrir la carpeta del proyecto en **Android Studio** (`File → Open`).
 2. Esperar a que termine la sincronización de Gradle.
-3. Elegir un emulador o un teléfono Android (mínimo API 24) y presionar **Run ▶**.
+3. Elegir un emulador o un teléfono Android (mínimo API 24) y presionar run.
 4. Ingresar con el usuario de prueba: `test@test.com` / `123456` (o crear una cuenta nueva).
 5. Para probar la cámara en el emulador: *Device Manager → Edit → Show Advanced Settings → Camera*.
-   Si no funciona, usar el botón **Galería**.
+   Si no funciona, usar el botón .
 
-Para correr las pruebas: `./gradlew test`
+Para correr las pruebas unitarias: `./gradlew test`
 
 ## Tecnologías
 
@@ -118,5 +118,5 @@ SQLite (`SQLiteOpenHelper`) · Activity Result API (cámara y galería) · FileP
 
 ## Datos de prueba
 
-Solo se deben usar imágenes autorizadas, de laboratorio o públicas, **sin rostros, direcciones IP,
-credenciales ni datos sensibles**, tal como pide el caso.
+Solo se deben usar imágenes autorizadas, de laboratorio o públicas, sin rostros, direcciones IP,
+credenciales ni datos sensibles
