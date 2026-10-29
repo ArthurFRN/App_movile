@@ -45,7 +45,7 @@ class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
     var observacionesError by mutableStateOf<String?>(null)
         private set
 
-    // Ruta de la foto de evidencia ("" si todavía no hay)
+    // Ruta de la foto de evidencia
     var rutaImagen by mutableStateOf("")
         private set
     var errorImagen by mutableStateOf<String?>(null)
@@ -81,7 +81,7 @@ class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
         observacionesError = Validaciones.observaciones(valor)
     }
 
-    // ---------- Evidencia: cámara y galería ----------
+    // Evidencia camara y galeria
 
     // Prepara el archivo donde la cámara guardará la foto y entrega su Uri
     fun prepararFotoCamara(context: Context): Uri {
@@ -113,7 +113,7 @@ class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
         errorImagen = "Sin permiso de cámara. Puedes elegir una imagen de la galería."
     }
 
-    // ---------- Guardar ----------
+    // Guardar
 
     fun guardar() {
         rackError = Validaciones.rackId(rackId)

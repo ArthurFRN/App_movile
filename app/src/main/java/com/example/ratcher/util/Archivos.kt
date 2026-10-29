@@ -66,7 +66,7 @@ object Archivos {
         opciones.inSampleSize = reduccion
         var bitmap = BitmapFactory.decodeFile(ruta, opciones) ?: return null
 
-        // 4) Las fotos de cámara pueden venir giradas: se corrige con los datos EXIF
+        // 4) Las fotos de cámara pueden venir giradas y quise corregir eso antes
         val grados: Float = try {
             val exif = ExifInterface(ruta)
             when (exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {

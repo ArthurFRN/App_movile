@@ -6,7 +6,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 
-// Recurso nativo: vibración del teléfono (se usa cuando hay un error)
+// Funcion para hacer vibrar el telefono en caso de tener un error
 fun vibrar(context: Context) {
     val vibrador: Vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         val administrador = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
