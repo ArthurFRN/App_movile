@@ -5,10 +5,8 @@ import com.example.ratcher.model.Componente
 import java.io.File
 import java.util.Random
 
-// SERVICIO DE PRUEBA ACADÉMICO: no usa inteligencia artificial real.
-// Elige componentes del catálogo usando el tamaño del archivo como "semilla",
-// así la misma foto siempre da el mismo resultado (útil para demostrar la app).
-// Más adelante esta clase se puede cambiar por un modelo de reconocimiento real.
+// Mock del reconocedor de componentes que simula la inferencia mediante un generador
+// pseudoaleatorio determinista basado en el peso del archivo.
 object ReconocedorSimulado {
 
     fun analizar(levantamientoId: Long, rutaImagen: String): List<Componente> {

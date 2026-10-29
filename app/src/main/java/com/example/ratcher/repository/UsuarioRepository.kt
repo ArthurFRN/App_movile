@@ -8,12 +8,12 @@ import com.example.ratcher.util.Seguridad
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-// Intermediario entre los ViewModels y la tabla "usuarios"
+// Repositorio que gestiona las operaciones de persistencia y verificación de usuarios.
 class UsuarioRepository(context: Context) {
 
     private val baseDatos = BaseDatos.obtener(context)
 
-    // Devuelve el usuario si el correo y la contraseña son correctos, o null si no
+    // Verifica las credenciales del usuario y devuelve sus datos o nulo si no son correctos
     suspend fun login(correo: String, clave: String): Usuario? = withContext(Dispatchers.IO) {
         val db = baseDatos.readableDatabase
         val cursor = db.rawQuery(
@@ -34,7 +34,7 @@ class UsuarioRepository(context: Context) {
         }
     }
 
-    // Devuelve false si el correo ya estaba registrado
+    //  Registra un usuario aplicando un hash a la contraseña y verifica si la inserción fue exitosa.
     suspend fun registrar(nombre: String, correo: String, cargo: String, clave: String): Boolean =
         withContext(Dispatchers.IO) {
             val db = baseDatos.writableDatabase
