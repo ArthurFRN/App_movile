@@ -37,8 +37,11 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+<<<<<<< HEAD
 import androidx.compose.material3.SnackbarHost
 import com.example.ratcher.IU.componentes.rememberAvisoError
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -70,7 +73,10 @@ fun NuevoLevantamientoScreen(
 ) {
     val context = LocalContext.current
     val sacudida = rememberSacudida(viewModel.fallos)
+<<<<<<< HEAD
     val estadoSnackbar = rememberAvisoError(viewModel.mensajeError) { viewModel.limpiarError() }
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     // Acuerdo de resultado de tarea para obtener imágenes utilizando la cámara del aparato.
     val lanzadorCamara = rememberLauncherForActivityResult(
@@ -106,7 +112,10 @@ fun NuevoLevantamientoScreen(
     }
 
     Scaffold(
+<<<<<<< HEAD
         snackbarHost = { SnackbarHost(estadoSnackbar) },
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         topBar = {
             BarraSuperior(
                 titulo = "Nuevo levantamiento",

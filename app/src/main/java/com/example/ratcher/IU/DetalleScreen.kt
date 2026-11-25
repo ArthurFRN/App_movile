@@ -1,8 +1,11 @@
 package com.example.ratcher.IU
 
+<<<<<<< HEAD
 import android.Manifest
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,8 +33,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+<<<<<<< HEAD
 import androidx.compose.material3.SnackbarHost
 import com.example.ratcher.IU.componentes.rememberAvisoError
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -59,7 +65,10 @@ import com.example.ratcher.IU.componentes.TarjetaSuave
 import com.example.ratcher.IU.componentes.rememberSacudida
 import com.example.ratcher.model.Catalogo
 import com.example.ratcher.model.Estados
+<<<<<<< HEAD
 import com.example.ratcher.util.Notificaciones
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import com.example.ratcher.util.vibrar
 import com.example.ratcher.viewmodel.DetalleViewModel
 
@@ -72,17 +81,21 @@ fun DetalleScreen(
     val context = LocalContext.current
     val sacudida = rememberSacudida(viewModel.fallos)
     var confirmarBorrado by remember { mutableStateOf(false) }
+<<<<<<< HEAD
     val estadoSnackbar = rememberAvisoError(viewModel.mensajeError) { viewModel.limpiarError() }
 
     // Permiso de notificaciones (Android 13+): se pide al validar y, se conceda o no, se valida igual
     val lanzadorPermisoNotificacion = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { viewModel.validar() }
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     LaunchedEffect(idLevantamiento) { viewModel.cargar(idLevantamiento) }
     LaunchedEffect(viewModel.eliminado) {
         if (viewModel.eliminado) onAtras()
     }
+<<<<<<< HEAD
     // Cuando el levantamiento queda validado se muestra la notificación del sistema
     LaunchedEffect(viewModel.recienValidado) {
         if (viewModel.recienValidado) {
@@ -90,6 +103,8 @@ fun DetalleScreen(
             viewModel.notificacionEntregada()
         }
     }
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
     LaunchedEffect(viewModel.fallos) {
         if (viewModel.fallos > 0) vibrar(context)
     }
@@ -97,7 +112,10 @@ fun DetalleScreen(
     val lev = viewModel.levantamiento
 
     Scaffold(
+<<<<<<< HEAD
         snackbarHost = { SnackbarHost(estadoSnackbar) },
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         topBar = {
             BarraSuperior(
                 titulo = "Detalle del levantamiento",
@@ -127,6 +145,7 @@ fun DetalleScreen(
                         }
                         BotonPrincipal(
                             texto = "Validar levantamiento",
+<<<<<<< HEAD
                             onClick = {
                                 if (Notificaciones.necesitaPermiso(context)) {
                                     lanzadorPermisoNotificacion.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -134,6 +153,9 @@ fun DetalleScreen(
                                     viewModel.validar()
                                 }
                             },
+=======
+                            onClick = { viewModel.validar() },
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
                             enabled = viewModel.puedeValidar,
                             modifier = Modifier.offset(x = sacudida)
                         )
@@ -149,6 +171,7 @@ fun DetalleScreen(
                     .padding(padding),
                 contentAlignment = Alignment.Center
             ) {
+<<<<<<< HEAD
                 if (viewModel.cargando) {
                     CircularProgressIndicator()
                 } else {
@@ -158,6 +181,9 @@ fun DetalleScreen(
                         color = MaterialTheme.colorScheme.secondary
                     )
                 }
+=======
+                CircularProgressIndicator()
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
             }
         } else {
             LazyColumn(

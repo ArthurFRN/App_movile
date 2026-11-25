@@ -1,20 +1,35 @@
 package com.example.ratcher.viewmodel
 
+<<<<<<< HEAD
+=======
+import android.app.Application
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+<<<<<<< HEAD
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ratcher.repository.ErrorServidor
+=======
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import com.example.ratcher.repository.UsuarioRepository
 import com.example.ratcher.util.Sesion
 import com.example.ratcher.util.Validaciones
 import kotlinx.coroutines.launch
 
+<<<<<<< HEAD
 class LoginViewModel : ViewModel() {
 
     private val repositorio = UsuarioRepository()
+=======
+class LoginViewModel(app: Application) : AndroidViewModel(app) {
+
+    private val repositorio = UsuarioRepository(app)
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     var email by mutableStateOf("")
         private set
@@ -55,6 +70,7 @@ class LoginViewModel : ViewModel() {
 
         viewModelScope.launch {
             estado = LoginState.Loading
+<<<<<<< HEAD
             try {
                 val usuario = repositorio.login(email.trim(), clave)
                 if (usuario != null) {
@@ -69,6 +85,14 @@ class LoginViewModel : ViewModel() {
                 fallos++
             } catch (e: Exception) {
                 estado = LoginState.Error("No se pudo conectar con el servidor. Revisa tu internet")
+=======
+            val usuario = repositorio.login(email.trim(), clave)
+            if (usuario != null) {
+                Sesion.usuario = usuario
+                estado = LoginState.Success("Bienvenido " + usuario.nombre)
+            } else {
+                estado = LoginState.Error("Correo o contraseña incorrectos")
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
                 fallos++
             }
         }

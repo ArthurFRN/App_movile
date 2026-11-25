@@ -1,10 +1,18 @@
 package com.example.ratcher.viewmodel
 
+<<<<<<< HEAD
+=======
+import android.app.Application
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+<<<<<<< HEAD
 import androidx.lifecycle.ViewModel
+=======
+import androidx.lifecycle.AndroidViewModel
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.lifecycle.viewModelScope
 import com.example.ratcher.model.Componente
 import com.example.ratcher.model.Estados
@@ -17,9 +25,15 @@ import com.example.ratcher.util.Validaciones
 import kotlinx.coroutines.launch
 import java.io.File
 
+<<<<<<< HEAD
 class DetalleViewModel : ViewModel() {
 
     private val repositorio = LevantamientoRepository()
+=======
+class DetalleViewModel(app: Application) : AndroidViewModel(app) {
+
+    private val repositorio = LevantamientoRepository(app)
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     var levantamiento by mutableStateOf<Levantamiento?>(null)
         private set
@@ -42,6 +56,7 @@ class DetalleViewModel : ViewModel() {
         private set
     var eliminado by mutableStateOf(false)
         private set
+<<<<<<< HEAD
     var cargando by mutableStateOf(true)
         private set
     var mensajeError by mutableStateOf<String?>(null)
@@ -50,6 +65,8 @@ class DetalleViewModel : ViewModel() {
     // Pasa a true cuando el levantamiento acaba de validarse (la pantalla lanza la notificación)
     var recienValidado by mutableStateOf(false)
         private set
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     private var idActual = 0L
 
@@ -62,6 +79,7 @@ class DetalleViewModel : ViewModel() {
 
     fun cargar(id: Long) {
         idActual = id
+<<<<<<< HEAD
         ejecutar { refrescar() }
     }
 
@@ -84,6 +102,19 @@ class DetalleViewModel : ViewModel() {
         historial = repositorio.historial(idActual)
     }
 
+=======
+        recargar()
+    }
+
+    private fun recargar() {
+        viewModelScope.launch {
+            levantamiento = repositorio.obtener(idActual)
+            componentes = repositorio.componentes(idActual)
+            historial = repositorio.historial(idActual)
+        }
+    }
+
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
     private suspend fun registrar(accion: String, detalle: String) {
         repositorio.agregarHistorial(
             Historial(
@@ -99,18 +130,32 @@ class DetalleViewModel : ViewModel() {
     // ---------- Acciones sobre un componente ----------
 
     fun confirmar(c: Componente) {
+<<<<<<< HEAD
         ejecutar {
             repositorio.actualizarComponente(c.id, c.categoria, c.descripcion, Estados.CONFIRMADO)
             registrar("Componente confirmado", c.categoria)
             refrescar()
+=======
+        viewModelScope.launch {
+            repositorio.actualizarComponente(c.id, c.categoria, c.descripcion, Estados.CONFIRMADO)
+            registrar("Componente confirmado", c.categoria)
+            recargar()
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         }
     }
 
     fun rechazar(c: Componente) {
+<<<<<<< HEAD
         ejecutar {
             repositorio.actualizarComponente(c.id, c.categoria, c.descripcion, Estados.RECHAZADO)
             registrar("Componente rechazado", c.categoria)
             refrescar()
+=======
+        viewModelScope.launch {
+            repositorio.actualizarComponente(c.id, c.categoria, c.descripcion, Estados.RECHAZADO)
+            registrar("Componente rechazado", c.categoria)
+            recargar()
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         }
     }
 
@@ -146,7 +191,11 @@ class DetalleViewModel : ViewModel() {
             return
         }
 
+<<<<<<< HEAD
         ejecutar {
+=======
+        viewModelScope.launch {
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
             repositorio.actualizarComponente(
                 componente.id,
                 categoriaEdicion,
@@ -158,7 +207,11 @@ class DetalleViewModel : ViewModel() {
                 componente.categoria + " -> " + categoriaEdicion
             )
             editando = null
+<<<<<<< HEAD
             refrescar()
+=======
+            recargar()
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         }
     }
 
@@ -169,6 +222,7 @@ class DetalleViewModel : ViewModel() {
             fallos++
             return
         }
+<<<<<<< HEAD
         ejecutar {
             repositorio.actualizarEstado(idActual, Estados.VALIDADO)
             registrar("Levantamiento validado", "Todos los componentes fueron revisados")
@@ -186,13 +240,30 @@ class DetalleViewModel : ViewModel() {
         ejecutar {
             repositorio.eliminar(idActual)
             if (!ruta.isNullOrEmpty()) {
+=======
+        viewModelScope.launch {
+            repositorio.actualizarEstado(idActual, Estados.VALIDADO)
+            registrar("Levantamiento validado", "Todos los componentes fueron revisados")
+            recargar()
+        }
+    }
+
+    fun eliminar() {
+        val ruta = levantamiento?.rutaImagen
+        viewModelScope.launch {
+            repositorio.eliminar(idActual)
+            if (ruta != null) {
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
                 File(ruta).delete()
             }
             eliminado = true
         }
     }
+<<<<<<< HEAD
 
     fun limpiarError() {
         mensajeError = null
     }
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 }

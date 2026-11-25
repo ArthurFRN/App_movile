@@ -1,7 +1,11 @@
 # Ratcher · Levantamiento móvil de infraestructura (CMC360)
 
 MVP académico para la asignatura **DSY1105 – Desarrollo de Aplicaciones Móviles**
+<<<<<<< HEAD
 (Duoc UC · CITT, Sede San Joaquín) · **Evaluación Parcial 3 (consumo de APIs, pruebas y APK)**.
+=======
+(Duoc UC · CITT, Sede San Joaquín) · **Evaluación Parcial 2**.
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
 ## Integrantes
 | Integrante | 
@@ -29,8 +33,13 @@ revisarlos (confirmar, corregir o rechazar), dejando todo guardado con trazabili
 
 | Módulo | Qué hace |
 |---|---|
+<<<<<<< HEAD
 | Login | Inicio de sesión con validación por campo. Autenticación contra Xano (token). |
 | Registro | Crear cuenta en Xano (nombre, correo, cargo, contraseña y confirmación). |
+=======
+| Login | Inicio de sesión con validación por campo. Usuarios guardados en base de datos local. |
+| Registro | Crear cuenta (nombre, correo, cargo, contraseña y confirmación). |
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 | Lista de levantamientos | Muestra todos los levantamientos con foto, estado y cantidad de componentes por revisar. |
 | Nuevo levantamiento | Formulario: ID del rack, área, fecha, observaciones y evidencia fotográfica. |
 | Evidencia | Foto con la **cámara** (pide permiso) o imagen desde la **galería**, con vista previa. |
@@ -42,8 +51,12 @@ revisarlos (confirmar, corregir o rechazar), dejando todo guardado con trazabili
 ### Recursos nativos usados
 1. **Cámara** (con permiso en tiempo de ejecución)
 2. **Galería de imágenes** (selector del sistema)
+<<<<<<< HEAD
 3. **Notificaciones** del sistema: aviso al validar un levantamiento (pide `POST_NOTIFICATIONS` en Android 13+)
 4. **Vibración** cuando hay errores en un formulario
+=======
+3. **Vibración** cuando hay errores en un formulario
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
 ### Animaciones
 - Transiciones entre pantallas (deslizar + desvanecer)
@@ -69,8 +82,13 @@ Para una versión real solo habría que reemplazar esa clase por un servicio de 
 |---|---|---|
 | Vista (UI) | `IU/`, `IU/componentes/` | Pantallas y componentes visuales. No contienen lógica de validación. |
 | ViewModel | `viewmodel/` | Estado de cada pantalla; llaman a las validaciones y a los repositorios. |
+<<<<<<< HEAD
 | Repositorio | `repository/` | Intermediario entre los ViewModels y la API de Xano. |
 | Datos | `data/` | Cliente Retrofit, interfaces de la API de Xano, DTOs y conversión a modelos. |
+=======
+| Repositorio | `repository/` | Intermediario entre los ViewModels y la base de datos. |
+| Datos | `data/` | Base de datos local SQLite (`BaseDatos`). |
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 | Modelo | `model/` | Clases de datos y catálogo de componentes. |
 | Utilidades | `util/` | Validaciones, archivos/fotos, vibración, sesión, fechas. |
 
@@ -81,6 +99,7 @@ app/src/main/java/com/example/ratcher/
  │   └─ componentes/     CampoTexto, BarraSuperior, TarjetaComponente, EtiquetaEstado, ...
  ├─ viewmodel/           Login, Registro, Home, NuevoLevantamiento, Detalle
  ├─ repository/          UsuarioRepository, LevantamientoRepository, ReconocedorSimulado
+<<<<<<< HEAD
  ├─ data/                ApiConfig, ApiClient, AuthApi, RatcherApi, Dtos, Mapeos
  ├─ model/               Usuario, Levantamiento, Componente, Historial, Catalogo
  ├─ util/                Validaciones, Archivos, Vibracion, Notificaciones, Sesion, Fechas
@@ -110,6 +129,17 @@ La guía de creación del backend está en [`docs/XANO_SETUP.md`](docs/XANO_SETU
 
 Todas las peticiones (menos login y registro) llevan el token en `Authorization: Bearer ...`
 (`ApiClient` lo agrega solo). Si no hay conexión la app muestra un aviso y no se cierra.
+=======
+ ├─ data/                BaseDatos
+ ├─ model/               Usuario, Levantamiento, Componente, Historial, Catalogo
+ ├─ util/                Validaciones, Archivos, Vibracion, Sesion, Fechas, Seguridad
+ └─ ui/theme/            Color, Theme, Type
+```
+
+### Base de datos (SQLite local)
+`usuarios` · `levantamientos` · `componentes` · `historial`
+(los componentes y el historial se borran solos si se elimina su levantamiento).
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
 ### Catálogo de componentes
 Switch · Patch panel · Servidor · UPS · PDU · Router · Firewall · Cableado · Rack vacío
@@ -117,12 +147,17 @@ Switch · Patch panel · Servidor · UPS · PDU · Router · Firewall · Cablead
 ## Flujo principal
 
 ```
+<<<<<<< HEAD
 Login (Xano) → Lista de levantamientos → Nuevo levantamiento (datos + foto)
+=======
+Login → Lista de levantamientos → Nuevo levantamiento (datos + foto)
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
       → Análisis de imagen → Detalle (confirmar / corregir / rechazar) → Validar
 ```
 
 ## Cómo ejecutar
 
+<<<<<<< HEAD
 1. Crear el backend en Xano siguiendo [`docs/XANO_SETUP.md`](docs/XANO_SETUP.md).
 2. Pegar las URLs de Xano en `data/ApiConfig.kt`.
 3. Abrir la carpeta del proyecto en **Android Studio** (`File → Open`) y esperar la sincronización de Gradle.
@@ -149,11 +184,25 @@ Login (Xano) → Lista de levantamientos → Nuevo levantamiento (datos + foto)
 
 La llave está en el repositorio solo por ser un proyecto académico; en un proyecto real no se sube a Git.
 El ícono personalizado (rack de servidores) está en `res/drawable/ic_launcher_*.xml` y `res/mipmap-*`.
+=======
+1. Abrir la carpeta del proyecto en **Android Studio** (`File → Open`).
+2. Esperar a que termine la sincronización de Gradle.
+3. Elegir un emulador o un teléfono Android (mínimo API 24) y presionar run.
+4. Ingresar con el usuario de prueba: `test@test.com` / `123456` (o crear una cuenta nueva).
+5. Para probar la cámara en el emulador: *Device Manager → Edit → Show Advanced Settings → Camera*.
+   Si no funciona, usar el botón .
+
+Para correr las pruebas unitarias: `./gradlew test`
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
 ## Tecnologías
 
 Kotlin · Jetpack Compose (Material 3) · Navigation Compose · ViewModel con estado de Compose ·
+<<<<<<< HEAD
 Retrofit · OkHttp · Gson · Xano (API REST) · Notificaciones · Activity Result API (cámara y galería) · FileProvider · Git + GitHub · Trello
+=======
+SQLite (`SQLiteOpenHelper`) · Activity Result API (cámara y galería) · FileProvider · Git + GitHub · Trello
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
 ## Datos de prueba
 

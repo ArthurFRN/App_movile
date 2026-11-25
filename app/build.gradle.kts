@@ -15,12 +15,18 @@ android {
         applicationId = "com.example.ratcher"
         minSdk = 24
         targetSdk = 36
+<<<<<<< HEAD
         versionCode = 2
         versionName = "2.0"
+=======
+        versionCode = 1
+        versionName = "1.0"
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+<<<<<<< HEAD
     // Firma del APK en modo release (llave de uso académico incluida en app/ratcher-release.jks)
     signingConfigs {
         create("release") {
@@ -34,6 +40,10 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
+=======
+    buildTypes {
+        release {
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
             optimization {
                 enable = false
             }
@@ -60,6 +70,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.material.icons.core)
+<<<<<<< HEAD
     // Consumo de la API de Xano
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
@@ -67,6 +78,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.junit)
     testImplementation(libs.okhttp.mockwebserver)
+=======
+    testImplementation(libs.junit)
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)

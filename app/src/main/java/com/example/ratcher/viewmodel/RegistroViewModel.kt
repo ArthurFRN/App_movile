@@ -1,19 +1,34 @@
 package com.example.ratcher.viewmodel
 
+<<<<<<< HEAD
+=======
+import android.app.Application
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+<<<<<<< HEAD
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ratcher.repository.ErrorServidor
+=======
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import com.example.ratcher.repository.UsuarioRepository
 import com.example.ratcher.util.Validaciones
 import kotlinx.coroutines.launch
 
+<<<<<<< HEAD
 class RegistroViewModel : ViewModel() {
 
     private val repositorio = UsuarioRepository()
+=======
+class RegistroViewModel(app: Application) : AndroidViewModel(app) {
+
+    private val repositorio = UsuarioRepository(app)
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     var nombre by mutableStateOf("")
         private set
@@ -95,6 +110,7 @@ class RegistroViewModel : ViewModel() {
 
         viewModelScope.launch {
             guardando = true
+<<<<<<< HEAD
             try {
                 val exito = repositorio.registrar(nombre, correo, cargo, clave)
                 if (exito) {
@@ -111,6 +127,16 @@ class RegistroViewModel : ViewModel() {
                 fallos++
             }
             guardando = false
+=======
+            val exito = repositorio.registrar(nombre, correo, cargo, clave)
+            guardando = false
+            if (exito) {
+                registrado = true
+            } else {
+                mensajeError = "Ese correo ya está registrado"
+                fallos++
+            }
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         }
     }
 }

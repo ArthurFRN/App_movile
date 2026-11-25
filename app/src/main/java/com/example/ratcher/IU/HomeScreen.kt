@@ -25,8 +25,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+<<<<<<< HEAD
 import androidx.compose.material3.SnackbarHost
 import com.example.ratcher.IU.componentes.rememberAvisoError
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -59,10 +62,15 @@ fun HomeScreen(
     LaunchedEffect(Unit) { viewModel.cargar() }
 
     val usuario = Sesion.usuario
+<<<<<<< HEAD
     val estadoSnackbar = rememberAvisoError(viewModel.mensajeError) { viewModel.limpiarError() }
 
     Scaffold(
         snackbarHost = { SnackbarHost(estadoSnackbar) },
+=======
+
+    Scaffold(
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
         topBar = {
             BarraSuperior(
                 titulo = "Ratcher",
