@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Cuerpo del rack -->
+    <path
+        android:fillColor="#1B2B48"
+        android:strokeColor="#8FC4E8"
+        android:strokeWidth="3"
+        android:pathData="M33,24h42v58h-42z" />
+    <!-- Tres equipos montados en el rack -->
+    <path
+        android:fillColor="#2358D8"
+        android:pathData="M38,30h32v12h-32z" />
+    <path
+        android:fillColor="#2358D8"
+        android:pathData="M38,45h32v12h-32z" />
+    <path
+        android:fillColor="#2358D8"
+        android:pathData="M38,60h32v12h-32z" />
+    <!-- Luces de estado -->
+    <path
+        android:fillColor="#D9B310"
+        android:pathData="M63,34h4v4h-4z" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M63,49h4v4h-4z" />
+    <path
+        android:fillColor="#D9B310"
+        android:pathData="M63,64h4v4h-4z" />
+    <!-- Patas -->
+    <path
+        android:fillColor="#8FC4E8"
+        android:pathData="M36,82h6v4h-6zM66,82h6v4h-6z" />
+</vector>
