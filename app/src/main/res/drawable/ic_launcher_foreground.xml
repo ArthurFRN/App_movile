@@ -1,9 +1,47 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+=======
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+<<<<<<< HEAD
+    <!-- Cuerpo del rack -->
+    <path
+        android:fillColor="#1B2B48"
+        android:strokeColor="#8FC4E8"
+        android:strokeWidth="3"
+        android:pathData="M33,24h42v58h-42z" />
+    <!-- Tres equipos montados en el rack -->
+    <path
+        android:fillColor="#2358D8"
+        android:pathData="M38,30h32v12h-32z" />
+    <path
+        android:fillColor="#2358D8"
+        android:pathData="M38,45h32v12h-32z" />
+    <path
+        android:fillColor="#2358D8"
+        android:pathData="M38,60h32v12h-32z" />
+    <!-- Luces de estado -->
+    <path
+        android:fillColor="#D9B310"
+        android:pathData="M63,34h4v4h-4z" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M63,49h4v4h-4z" />
+    <path
+        android:fillColor="#D9B310"
+        android:pathData="M63,64h4v4h-4z" />
+    <!-- Patas -->
+    <path
+        android:fillColor="#8FC4E8"
+        android:pathData="M36,82h6v4h-6zM66,82h6v4h-6z" />
+</vector>
+=======
     <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
         <aapt:attr name="android:fillColor">
             <gradient
@@ -28,3 +66,4 @@
         android:strokeWidth="1"
         android:strokeColor="#00000000" />
 </vector>
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f

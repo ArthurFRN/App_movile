@@ -1,13 +1,20 @@
 package com.example.ratcher.viewmodel
 
+<<<<<<< HEAD
+=======
 import android.app.Application
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import android.content.Context
 import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+<<<<<<< HEAD
+import androidx.lifecycle.ViewModel
+=======
 import androidx.lifecycle.AndroidViewModel
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 import androidx.lifecycle.viewModelScope
 import com.example.ratcher.model.Historial
 import com.example.ratcher.model.Levantamiento
@@ -21,9 +28,15 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
 
+<<<<<<< HEAD
+class NuevoLevantamientoViewModel : ViewModel() {
+
+    private val repositorio = LevantamientoRepository()
+=======
 class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
 
     private val repositorio = LevantamientoRepository(app)
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     var rackId by mutableStateOf("")
         private set
@@ -57,6 +70,11 @@ class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
         private set
     var fallos by mutableIntStateOf(0)
         private set
+<<<<<<< HEAD
+    var mensajeError by mutableStateOf<String?>(null)
+        private set
+=======
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 
     // Ruta donde la cámara va a guardar la foto
     private var rutaTemporal = ""
@@ -132,6 +150,67 @@ class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             analizando = true
             val usuario = Sesion.nombre()
+<<<<<<< HEAD
+            var id = 0L
+
+            try {
+                id = repositorio.crear(
+                    Levantamiento(
+                        rackId = rackId,
+                        area = area,
+                        fecha = fecha,
+                        observaciones = observaciones,
+                        rutaImagen = rutaImagen,
+                        responsable = usuario
+                    )
+                )
+                repositorio.agregarHistorial(
+                    Historial(
+                        levantamientoId = id,
+                        accion = "Levantamiento creado",
+                        detalle = "Evidencia asociada al rack " + rackId.trim(),
+                        fecha = Fechas.ahora(),
+                        usuario = usuario
+                    )
+                )
+
+                delay(2000) // pausa para que se vea la animación de análisis
+                val componentes = ReconocedorSimulado.analizar(id, rutaImagen)
+                repositorio.guardarComponentes(componentes)
+                repositorio.agregarHistorial(
+                    Historial(
+                        levantamientoId = id,
+                        accion = "Reconocimiento automático",
+                        detalle = componentes.size.toString() + " componentes detectados en la imagen",
+                        fecha = Fechas.ahora(),
+                        usuario = "Sistema"
+                    )
+                )
+                analizando = false
+                idCreado = id
+            } catch (e: Exception) {
+                analizando = false
+                mensajeError = "No se pudo guardar el levantamiento. Revisa tu conexión e inténtalo de nuevo."
+                fallos++
+                descartarIncompleto(id)
+            }
+        }
+    }
+
+    // Si el guardado falló a medias se borra lo que alcanzó a crearse en Xano para no dejar datos incompletos
+    private suspend fun descartarIncompleto(id: Long) {
+        if (id == 0L) return
+        try {
+            repositorio.eliminar(id)
+        } catch (e: Exception) {
+            // Sin conexión: no hay más que hacer
+        }
+    }
+
+    fun limpiarError() {
+        mensajeError = null
+    }
+=======
 
             val id = repositorio.crear(
                 Levantamiento(
@@ -170,4 +249,5 @@ class NuevoLevantamientoViewModel(app: Application) : AndroidViewModel(app) {
             idCreado = id
         }
     }
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
 }

@@ -2,8 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
+    <!--PERMISOS: INTERNET (API Xano), CAMARA, VIBRACION Y NOTIFICACIONES-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+=======
     <!--SOLICITUDES DE PERMISOS PARA PODER USAR LA CAMARA Y NOTIFICACIONES-->
     <uses-permission android:name="android.permission.CAMERA" />
+>>>>>>> 07bee8b6740d28cb1a7d463b40455584c0cab57f
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature
         android:name="android.hardware.camera"
